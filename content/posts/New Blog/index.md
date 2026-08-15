@@ -1,6 +1,6 @@
 ---
-title: "Homepage:"
-date: 2026-6-08
+title: New Blog
+date: 2026-06-08
 pageTitleSuffix: What Even am I doing?
 ---
 # Welcome to my new blog

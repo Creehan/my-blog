@@ -8,7 +8,7 @@ tags:
   - food
 title: On Cooking and Grilled Cheeses
 ---
-This came about when a group of my friends and I were talking about grilled cheese sandwiches and what we do when we're makin 'em at night
+This came about when a group of my friends and I were talking about grilled cheese sandwiches and what we do when we're makin 'em at night.
 
 The conversation quickly turned into something much more than a discussion of bread, butter, and cheese. I realized that this starts to get into a broader theory of all cooking really quickly. I haven't fully thought through every aspect of this but my working theory right now is: 
 
