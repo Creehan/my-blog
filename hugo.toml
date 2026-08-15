@@ -66,7 +66,7 @@ enableGitInfo = false
   # Your blurb, shown above the chronological post list on the home page.
   [params.homeInfoParams]
     Title   = 'Ponderings'
-    Content = 'Write your blurb here. Markdown works, so you can **bold** things or [link out](https://creehan.me).'
+    Content = 'Welcome to the new Blog. See posts below.'
 
   [params.assets]
     disableHLJS = true
