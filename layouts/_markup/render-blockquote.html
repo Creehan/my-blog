@@ -1,0 +1,47 @@
+{{/*
+  Goes in:  <repo root>/layouts/_markup/render-blockquote.html
+
+  If your callouts render as plain blockquotes, your Hugo is older than
+  0.146 -- move this file to layouts/_default/_markup/render-blockquote.html
+  instead. Everything else stays the same.
+
+  Turns Obsidian callouts into styled boxes:
+
+      > [!NOTE]
+      > Body text.
+
+      > [!WARNING] With a custom title
+      > Body text.
+
+      > [!TIP]- Starts collapsed
+      > Body text.
+
+  A plain blockquote with no [!TYPE] marker renders normally.
+*/}}
+
+{{- if eq .Type "alert" -}}
+  {{- $foldable := or (eq .AlertSign "+") (eq .AlertSign "-") -}}
+  {{- if $foldable -}}
+    <details class="callout callout-{{ .AlertType }}"{{ if eq .AlertSign "+" }} open{{ end }}>
+      <summary class="callout-title">
+        {{ with .AlertTitle }}{{ . }}{{ else }}{{ title .AlertType }}{{ end }}
+      </summary>
+      <div class="callout-body">
+        {{ .Text }}
+      </div>
+    </details>
+  {{- else -}}
+    <div class="callout callout-{{ .AlertType }}">
+      <p class="callout-title">
+        {{ with .AlertTitle }}{{ . }}{{ else }}{{ title .AlertType }}{{ end }}
+      </p>
+      <div class="callout-body">
+        {{ .Text }}
+      </div>
+    </div>
+  {{- end -}}
+{{- else -}}
+  <blockquote>
+    {{ .Text }}
+  </blockquote>
+{{- end -}}

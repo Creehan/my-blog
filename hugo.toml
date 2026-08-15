@@ -1,0 +1,97 @@
+########################################
+#  Goes in:  <repo root>/hugo.toml
+########################################
+
+baseURL      = 'https://creehan.me/'
+languageCode = 'en-us'
+title        = 'Ponderings'          # <-- change to whatever you want in the header
+theme        = 'PaperMod'
+
+enableRobotsTXT = true
+
+# ---------------------------------------------------------------
+# THE IMPORTANT ONE. Leave this false.
+# Turning it on makes Hugo pull dates from git history, which will
+# republish a post every time you fix a typo -- the exact Quartz
+# behaviour you got burned by.
+# ---------------------------------------------------------------
+enableGitInfo = false
+
+# Dates come from your Obsidian properties and nowhere else.
+# No filename parsing, no file-modified-time fallback.
+[frontmatter]
+  date        = ['date']
+  lastmod     = ['lastmod', 'date']
+  publishDate = ['date']
+  expiryDate  = ['expiryDate']
+
+# You only use tags, so don't generate empty category pages.
+[taxonomies]
+  tag = 'tags'
+
+[pagination]
+  pagerSize = 10
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true        # lets raw HTML through, Obsidian emits some occasionally
+  [markup.highlight]
+    noClasses   = false
+    codeFences  = true
+    lineNos     = false
+
+# Required by the GitHub Actions workflow's cache step.
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
+
+# PaperMod's search needs JSON output on the home page.
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
+
+[params]
+  DateFormat          = 'January 2, 2006'
+  ShowReadingTime     = true
+  ShowWordCount       = false
+  ShowPostNavLinks    = true
+  ShowBreadCrumbs     = true
+  ShowCodeCopyButtons = true
+  ShowShareButtons    = false
+  ShowToc             = true
+  TocOpen             = false
+  comments            = false
+  defaultTheme        = 'auto'      # follows the reader's system light/dark
+  ShowFullTextinRSS   = true
+
+  # Your blurb, shown above the chronological post list on the home page.
+  [params.homeInfoParams]
+    Title   = 'Ponderings'
+    Content = 'Write your blurb here. Markdown works, so you can **bold** things or [link out](https://creehan.me).'
+
+  [params.assets]
+    disableHLJS = true
+
+# Top nav. Delete any you don't want.
+[[menu.main]]
+  identifier = 'archives'
+  name       = 'Archive'
+  url        = '/archives/'
+  weight     = 10
+
+[[menu.main]]
+  identifier = 'tags'
+  name       = 'Tags'
+  url        = '/tags/'
+  weight     = 20
+
+[[menu.main]]
+  identifier = 'search'
+  name       = 'Search'
+  url        = '/search/'
+  weight     = 30
+
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block  = [['$$', '$$'], ['\[', '\]']]
+    inline = [['\(', '\)']]

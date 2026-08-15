@@ -1,0 +1,84 @@
+/* ======================================================
+   Goes in:  <repo root>/assets/css/extended/callouts.css
+
+   PaperMod automatically bundles anything in assets/css/extended/.
+   No config needed -- just drop the file in.
+   ====================================================== */
+
+.callout {
+  --callout-color: var(--secondary);
+  border-left: 4px solid var(--callout-color);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--callout-color) 8%, transparent);
+  padding: 0.85em 1.1em;
+  margin: 1.4em 0;
+}
+
+.callout-title {
+  color: var(--callout-color);
+  font-weight: 700;
+  margin: 0 0 0.35em 0;
+  line-height: 1.4;
+}
+
+.callout-body > :first-child { margin-top: 0; }
+.callout-body > :last-child  { margin-bottom: 0; }
+
+/* Collapsible variants: > [!TIP]- and > [!TIP]+ */
+details.callout > summary {
+  cursor: pointer;
+  list-style: none;
+}
+details.callout > summary::-webkit-details-marker { display: none; }
+details.callout > summary::before {
+  content: "\25B8";           /* right-pointing triangle */
+  display: inline-block;
+  margin-right: 0.5em;
+  transition: transform 0.15s ease;
+}
+details.callout[open] > summary::before { transform: rotate(90deg); }
+
+/* ---- Colours by callout type ----
+   Obsidian's built-in types, grouped by intent.
+   Add your own with .callout-<type> { --callout-color: <colour>; } */
+
+.callout-note,
+.callout-info,
+.callout-todo      { --callout-color: #3b82f6; }  /* blue   */
+
+.callout-abstract,
+.callout-summary,
+.callout-tldr,
+.callout-tip,
+.callout-hint       { --callout-color: #06b6d4; } /* cyan   */
+
+.callout-success,
+.callout-check,
+.callout-done       { --callout-color: #22c55e; } /* green  */
+
+.callout-question,
+.callout-help,
+.callout-faq        { --callout-color: #eab308; } /* yellow */
+
+.callout-warning,
+.callout-caution,
+.callout-attention  { --callout-color: #f97316; } /* orange */
+
+.callout-failure,
+.callout-fail,
+.callout-missing,
+.callout-danger,
+.callout-error,
+.callout-bug        { --callout-color: #ef4444; } /* red    */
+
+.callout-important  { --callout-color: #8b5cf6; } /* violet */
+
+.callout-example    { --callout-color: #a855f7; } /* purple */
+
+.callout-quote,
+.callout-cite       { --callout-color: var(--secondary); }
+
+/* Nudge the tint up slightly in dark mode so boxes stay visible */
+.dark .callout {
+  background: color-mix(in srgb, var(--callout-color) 14%, transparent);
+}
